@@ -1,2 +1,1 @@
-# TestWordPress
-TestWordPress
+# Wordpress CV Website
