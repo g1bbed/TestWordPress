@@ -9,28 +9,33 @@
 
     <?php wp_head(); ?>
 
-    <?php if (get_field('dark_mode', 'options')) : ?>
-
-        <style>
-
-        body {
-            background: #000 !important;
-        }
-
-        </style>
-
-    <?php endif ?>
-
 </head>
 
-
-<body <?php body_class(); ?>>
-
-
+<body <?php body_class();
+        $logobackground = get_field('logo', 'options');
+        ?>>
     <header class="main">
-        <?php
-        wp_nav_menu(array(
-            'theme_location' => 'top-menu',
-        ));
-        ?>
+        <div class="header-grid-container">
+            <div class="grid-column-1">
+                <iframe src="https://editor.p5js.org/stephanieclaire/embed/nEtA2Kp-P"></iframe>
+            </div>
+            <div class="grid-column-2">
+                <?php if (have_rows('quick_link', 'options')) : ?>
+                    <?php while (have_rows('quick_link', 'options')) : the_row();
+                        $icon = get_sub_field('icon');
+                        $link = get_sub_field('link');
+                    ?>
+                        <div class="tooltip">
+                            <a href="<?php echo $link['url'] ?>" target="_blank " class="round-button" role="button">
+                                <?php echo $icon ?>
+                            </a>
+                            <div class="function bottom">
+                                <i></i>
+                                <?php echo $link['title'] ?>
+                            </div>
+                        </div>
+                    <?php endwhile; ?>
+                <?php endif; ?>
+            </div>
+        </div>
     </header>

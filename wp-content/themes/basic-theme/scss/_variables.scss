@@ -1,0 +1,25 @@
+@include font-face(
+  "butlerbold",
+  "../fonts/butler_bold-webfont",
+  ("woff2", "woff")
+) {
+  font-style: normal;
+  font-weight: normal;
+}
+
+@function hc($colour, $alpha) {
+    @return hsla(hue($colour), 70, lightness($colour), $alpha);
+}
+
+//fonts
+$primary-font: "Open Sans",
+sans-serif;
+$secondary-font: "butlerbold";
+
+//COLOURS
+$colours: (primary: #303030,
+    secondary: #0d47a1,
+    txt: #303030,
+    links: #cddc39,
+    cblue: #2185d0,
+    lightgrey: #f8f8f8)

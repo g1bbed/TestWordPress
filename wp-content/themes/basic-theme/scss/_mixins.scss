@@ -1,0 +1,22 @@
+@mixin fontsettings($font-colour:$a, $font-family:$primary-font, $font-size:1.5em, $font-weight:400, $line-height: 1.5em) {
+    color: $font-colour;
+    line-height: $line-height;
+
+    font: {
+        family: $font-family;
+        size: $font-size;
+        weight: $font-weight;
+    }
+}
+
+@mixin inset-box-shadow($t:0, $r:0, $b:0, $l:0, $colour:#333) {
+    -moz-box-shadow: $t $r $b $l $colour inset;
+    -webkit-box-shadow: $t $r $b $l $colour inset;
+    box-shadow: $t $r $b $l $colour inset;
+}
+
+@mixin box-shadow($t:0, $r:0, $b:0, $l:0, $colour:#333) {
+    -moz-box-shadow: $t $r $b $l $colour;
+    -webkit-box-shadow: $t $r $b $l $colour;
+    box-shadow: $t $r $b $l $colour;
+}

@@ -1,0 +1,294 @@
+@import "./_reset.scss";
+@import "./_bourbon.scss";
+@import "./_variables.scss";
+@import "./layout.scss";
+
+//TYPE
+
+html {
+    font: {
+        size: 16px;
+        weight: 300;
+        family: $primary-font;
+    }
+
+    // @include media(">1400px") {
+    //     font-size: 18px;
+    // }
+
+    // @include media("<=tablet") {
+    //     font-size: 15px;
+    // }
+
+    // @include media("<=phone") {
+    //     font-size: 13px;
+    // }
+}
+
+%br {
+    -webkit-border-radius: .3rem;
+    -moz-border-radius: .3rem;
+    border-radius: .3rem;
+}
+
+@import "./_mixins.scss";
+
+h1 {
+    @include fontsettings(map-get($colours, primary), $secondary-font, 2.5em, 600);
+    @include margin(2rem null null null);
+
+    span {
+        color: map-get($colours, links);
+    }
+}
+
+h2 {
+    @include fontsettings(map-get($colours, secondary), $primary-font, 1.5em, 400);
+    @include margin(1rem null .75rem null);
+}
+
+h3 {
+    @include fontsettings(map-get($colours, primary), $primary-font, 1.17em, 700);
+    @include margin(1rem null .75rem null);
+}
+
+h4 {
+    @include fontsettings(map-get($colours, primary), $primary-font, 1.12em, 400);
+    @include margin(1rem null .75rem null);
+}
+
+h5 {
+    @include fontsettings(map-get($colours, primary), $primary-font, .83em, 700);
+    @include margin(1rem null .75rem null);
+}
+
+h6 {
+    @include fontsettings(map-get($colours, primary), $primary-font, .75em, 700);
+    @include margin(.5rem null .5rem null);
+}
+
+
+
+p {
+    @include fontsettings(map-get($colours, txt), $primary-font, 1em, 300);
+    @include margin(1rem null 1.5rem null);
+    justify-content: left;
+
+    a {
+        color: map-get($colours, links);
+
+        font: {
+            weight: 700;
+        }
+    }
+
+    a:hover {
+        color: hc(map-get($colours, links), .5);
+        text-decoration: underline;
+    }
+}
+
+.c {
+    text-align: center;
+}
+
+.l {
+    text-align: left;
+}
+
+.r {
+    text-align: right;
+}
+
+//BUTTONS
+
+.button {
+    @extend %br;
+    @include fontsettings(map-get($colours, cblue), $primary-font, .7em, 700, 3.5em);
+    @include inset-box-shadow(0, 0, 0, 1px, map-get($colours, cblue));
+    @include margin(null .25em null null);
+    @include padding(.75em 1.5em);
+
+    text: {
+        align: center;
+        decoration: none;
+        transform: capitalize;
+    }
+
+    &:visited {
+        color: map-get($colours, cblue);
+    }
+
+    &:hover {
+        @include inset-box-shadow(0, 0, 0, 1px, hc(map-get($colours, cblue), .5));
+        color: hc(map-get($colours, cblue), .5);
+    }
+}
+
+.round-button {
+    @extend %br;
+    @include fontsettings(lighten(map-get($colours, primary), 40%), $primary-font, 1em, 700, 3em);
+    @include box-shadow(0, 1px, 1px, 1px, lighten(map-get($colours, primary), 60%));
+    @include margin(null .25em null null);
+    @include padding(.6em .9em);
+    border-radius: 50%;
+
+    text: {
+        align: center;
+        decoration: none;
+        transform: capitalize;
+    }
+
+    &:hover {
+        @include box-shadow(0, 20px, 20px, 1px, lighten(map-get($colours, primary), 60%));
+        color: map-get($colours, primary);
+    }
+
+    .far {
+        color: lighten(map-get($colours, primary), 40%);
+    }
+}
+
+//LIGHT GALLERY SLIDER
+.swiper-container {
+    @include padding(2rem null null null) .swiper-slide {
+        background-size: cover;
+        height: 550px;
+        overflow: hidden;
+
+        img {
+            height: 550px;
+            object-fit: cover;
+            object-position: center top;
+            width: 100%;
+        }
+
+        :before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(60%, rgba(0, 0, 0, 0)), color-stop(80%, rgba(255, 255, 255, 0.7)), to(white));
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 60%, rgba(255, 255, 255, 0.7) 80%, white 100%);
+            opacity: 1;
+        }
+    }
+}
+
+//Percentage Bar
+
+.myabilities-grid-container {
+    .abilities-bar {
+        background: hc(map-get($colours, primary), .1);
+        border-radius: 3px;
+        width: 100%;
+
+        .percentage {
+            @include fontsettings (#fff, $primary-font, .6em, 400, 1.3em);
+            @include padding(0 .3rem);
+            background: map-get($colours, cblue);
+            border-radius: 3px;
+            text-align: right;
+            max-width: 99%;
+        }
+    }
+
+    .label {
+        @include fontsettings(map-get($colours, primary), $primary-font, .6em, 700);
+        @include padding(null null null null);
+    }
+
+    .title {
+        @include fontsettings(map-get($colours, primary), $primary-font, .8em, 400);
+    }
+}
+
+//Tooltip
+
+.tooltip {
+    border: none;
+    display: inline-block;
+    position: relative;
+    text-align: left;
+
+    .function {
+        @include box-shadow(1px, 3px, 4px, 1px, lighten(map-get($colours, primary), 70%));
+        @include fontsettings(map-get($colours, txt), $primary-font, .7em, 400);
+        @include padding(10px 20px);
+        background-color: #FFFFFF;
+        border-radius: 8px;
+        box-sizing: border-box;
+        display: none;
+        min-width: 100px;
+        left: 50%;
+        position: absolute;
+        text-align: center;
+        z-index: 99999999;
+
+        i {
+            @include margin(null null null -12px);
+            bottom: 100%;
+            height: 12px;
+            overflow: hidden;
+            position: absolute;
+            width: 24px;
+
+            &::after {
+                @include box-shadow(0px, 1px, 1px, 1px, lighten(map-get($colours, primary), 70%));
+                background-color: #FFFFFF;
+                content: '';
+                height: 12px;
+                position: absolute;
+                width: 12px;
+            }
+        }
+    }
+
+    &:hover .function {
+        display: block;
+    }
+
+    .bottom {
+        top: 60px;
+        transform: translate(-50%, 0);
+
+        i {
+            bottom: 100%;
+            left: 50%;
+
+            &::after {
+                left: 50%;
+                transform: translate(-50%, 50%) rotate(45deg);
+            }
+        }
+    }
+
+    .top {
+        top: -20px;
+        transform: translate(-50%, -100%);
+
+        i {
+            left: 50%;
+            top: 100%;
+
+            &::after {
+                left: 50%;
+                transform: translate(-50%, -50%) rotate(45deg);
+            }
+        }
+    }
+}
+
+/// Footer
+
+.footer {
+
+    background: map-get($colours, primary);
+
+    p {
+        color: map-get($colours, lightgrey);
+        font-size: .8rem
+    }
+}
